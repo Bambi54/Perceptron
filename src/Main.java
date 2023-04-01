@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        //System.out.println("Podaj stałą uczenia:");
+        System.out.println("Podaj stałą uczenia:");
 
         Scanner s = new Scanner(System.in);
-        //double alpha = s.nextDouble();
+        double alpha = s.nextDouble();
 
-        //System.out.println("Podaj ścieżkę do pliku treningowego .csv:");
-        //String pathTrain = s.next();
+        System.out.println("Podaj ścieżkę do pliku treningowego .csv:");
+        String pathTrain = s.next();
 
         Perceptron p = train(0.01, "./perceptron.data");
 
@@ -92,7 +92,7 @@ public class Main {
 
         Perceptron p = Perceptron.createPerceptron(training.get(0).getInputs().size(), alpha, training.size());
 
-        for (int i = 1; p.getError() > 0.03 || i < 1_000; i++) {
+        for (int i = 1; p.getError() > 0.03 || i  < 1_000; i++) {
 
             p.differ(training);
 
