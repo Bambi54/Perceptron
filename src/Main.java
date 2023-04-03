@@ -9,15 +9,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Podaj stałą uczenia:");
+        System.out.println("Podaj stala uczenia:");
 
         Scanner s = new Scanner(System.in);
         double alpha = s.nextDouble();
 
-        System.out.println("Podaj ścieżkę do pliku treningowego .csv:");
+        System.out.println("Podaj sciezke do pliku treningowego .csv:");
         String pathTrain = s.next();
 
-        Perceptron p = train(0.01, "./perceptron.data");
+        Perceptron p = train(alpha, pathTrain);
 
         System.out.println("==========================================");
         System.out.println("\t\t\tKONIEC TRENINGU");
@@ -27,16 +27,16 @@ public class Main {
 
         while (choice != 3) {
 
-            System.out.println("Wybierz opcję: ");
-            System.out.println("1. Podanie ścieżki do pliku testowego");
-            System.out.println("2. Ręczne podanie wektorów do klasyfikacji");
-            System.out.println("3. Zamknięcie programu");
+            System.out.println("Wybierz opcje: ");
+            System.out.println("1. Podanie sciezki do pliku testowego");
+            System.out.println("2. Reczne podanie wektorow do klasyfikacji");
+            System.out.println("3. Zamkniecie programu");
 
             choice = s.nextInt();
 
             switch (choice) {
                 case 1: {
-                    System.out.println("Podaj ścieżkę do pliku testowego .csv:");
+                    System.out.println("Podaj sciezke do pliku testowego .csv:");
                     String pathTest = s.next();
                     test(p, pathTest);
                     break;
@@ -49,7 +49,7 @@ public class Main {
                     break;
                 }
                 default: {
-                    System.out.println("Niepoprawna opcja, spróbuj jeszcze raz.\n");
+                    System.out.println("Niepoprawna opcja, sprobuj jeszcze raz.\n");
                 }
             }
         }
@@ -73,7 +73,7 @@ public class Main {
 
             System.out.println(
                     "Dane: " + test.get(i) +
-                    " || Klasa przyporządkowana: " + Element.values.get(p.getResult(i) == 0 ? 1 : 0) +
+                    " || Klasa przyporzadkowana: " + Element.values.get(p.getResult(i) == 0 ? 1 : 0) +
                             " || Klasa rzeczywista: " + Element.values.get(test.get(i).getExpected_output() == 0 ? 1 : 0)
             );
 
@@ -82,7 +82,7 @@ public class Main {
 
         acc /= test.size();
 
-        System.out.println("Dokładność: " + acc + "\n");
+        System.out.println("Dokladnosc: " + acc + "\n");
 
     }
 
@@ -97,7 +97,7 @@ public class Main {
             p.differ(training);
 
             System.out.println("Iteracja: " + i + "\n"
-                    + "Błąd: " + p.getError() + "\n");
+                    + "Blad: " + p.getError() + "\n");
 
         }
 
@@ -122,7 +122,7 @@ public class Main {
 
     public static void enterElem (Perceptron p){
 
-        System.out.println("Podaj dokładnie " + p.SIZE + " wartości");
+        System.out.println("Podaj dokladnie " + p.SIZE + " wartosci");
         Scanner s = new Scanner(System.in);
         double x1 = s.nextDouble();
         double x2 = s.nextDouble();
@@ -137,7 +137,7 @@ public class Main {
 
         System.out.println(
                 "Dane: " + elem +
-                        " || Klasa przyporządkowana: " + Element.values.get(p.getResult(0) == 0 ? 1 : 0)
+                        " || Klasa przyporzadkowana: " + Element.values.get(p.getResult(0) == 0 ? 1 : 0)
         );
 
     }
